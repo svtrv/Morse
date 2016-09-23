@@ -1,0 +1,9 @@
+c:\users\swter\documents\visual studio 2015\Projects\Morse Translator\Morse Translator\bin\Debug\Morse Translator.exe.config
+c:\users\swter\documents\visual studio 2015\Projects\Morse Translator\Morse Translator\bin\Debug\Morse Translator.exe
+c:\users\swter\documents\visual studio 2015\Projects\Morse Translator\Morse Translator\bin\Debug\Morse Translator.pdb
+c:\users\swter\documents\visual studio 2015\Projects\Morse Translator\Morse Translator\obj\Debug\Morse Translator.csprojResolveAssemblyReference.cache
+c:\users\swter\documents\visual studio 2015\Projects\Morse Translator\Morse Translator\obj\Debug\Morse_Translator.Form1.resources
+c:\users\swter\documents\visual studio 2015\Projects\Morse Translator\Morse Translator\obj\Debug\Morse_Translator.Properties.Resources.resources
+c:\users\swter\documents\visual studio 2015\Projects\Morse Translator\Morse Translator\obj\Debug\Morse Translator.csproj.GenerateResource.Cache
+c:\users\swter\documents\visual studio 2015\Projects\Morse Translator\Morse Translator\obj\Debug\Morse Translator.exe
+c:\users\swter\documents\visual studio 2015\Projects\Morse Translator\Morse Translator\obj\Debug\Morse Translator.pdb
