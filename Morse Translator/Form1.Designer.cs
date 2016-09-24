@@ -35,6 +35,7 @@
             this.playbtn = new System.Windows.Forms.Button();
             this.wpmTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.copybtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // m2tbtn
@@ -101,11 +102,22 @@
             this.label1.TabIndex = 7;
             this.label1.Text = "Words/min";
             // 
+            // copybtn
+            // 
+            this.copybtn.Location = new System.Drawing.Point(239, 117);
+            this.copybtn.Name = "copybtn";
+            this.copybtn.Size = new System.Drawing.Size(44, 23);
+            this.copybtn.TabIndex = 8;
+            this.copybtn.Text = "copy";
+            this.copybtn.UseVisualStyleBackColor = true;
+            this.copybtn.Click += new System.EventHandler(this.copybtn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(295, 194);
+            this.Controls.Add(this.copybtn);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.wpmTextBox);
             this.Controls.Add(this.playbtn);
@@ -129,6 +141,7 @@
         private System.Windows.Forms.Button playbtn;
         private System.Windows.Forms.TextBox wpmTextBox;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button copybtn;
     }
 }
 

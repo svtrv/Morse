@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 /* Created & published by Ilya Kalitov 
- * swterr@outlook.com
+ * swterr at outlook dot com
  * github.com/svtrv 
  */
  //TODO: clipboard copy
@@ -68,37 +68,29 @@ namespace Morse_Translator
         }
         private async void playbtn_Click(object sender, EventArgs e)
         {
-            playbtn.Enabled = false; 
+            playbtn.Enabled = false;
 
-            string input = inputTextBox.Text;
-            input = input.ToLower();//there is no case-specific Morse codes, so ToLower looks necessary
-            var punctuation = input.Where(Char.IsPunctuation).Distinct().ToArray();
-            var words = input.Split().Select(x => x.Trim(punctuation));
-            foreach (string word in words)
+            byte[][][] result = MorseLib.TextToMorseBytes(inputTextBox.Text);
+            foreach(byte[][] word in result)
             {
-                foreach(char ch in word)
+                foreach(byte[] letter in word)
                 {
-                    byte[] bytes;
-                    if (MorseLib.dictionary.TryGetValue(ch, out bytes))
+                    foreach (byte beep in letter)
                     {
-                        foreach (byte b in bytes)
+                        if (beep == MorseLib.dot)
                         {
-                            if (b == MorseLib.dot)
-                            {
-                                await playSound(1);
-                            }
-                            else if (b == MorseLib.dash)
-                            {
-                                await playSound(3);
-                            }
-                            await symbolDelay();
+                            await playSound(1);
                         }
+                        else if (beep == MorseLib.dash)
+                        {
+                            await playSound(3);
+                        }
+                        await symbolDelay();
                     }
                     await letterDelay();
                 }
                 await wordDelay();
             }
-
 
             playbtn.Enabled = true;
         }
@@ -117,6 +109,11 @@ namespace Morse_Translator
             {
                 wpmTextBox.ForeColor = Color.DarkRed;
             }
+        }
+
+        private void copybtn_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(outputTextBox.Text);
         }
     }
 }
