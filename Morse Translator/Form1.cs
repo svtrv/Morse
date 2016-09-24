@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -12,7 +7,7 @@ using System.Windows.Forms;
  * swterr at outlook dot com
  * github.com/svtrv 
  */
- //TODO: clipboard copy
+
 namespace Morse_Translator
 {
     public partial class Form1 : Form
@@ -25,31 +20,36 @@ namespace Morse_Translator
 
         public int lengthOfSound = 60;// in ms
         public int frequency = 550; // in Hz
-
-        private bool isCurrentModeM2T()
-        {
-            if (m2tbtn.Enabled)//if morse to text btn is avaiable to enable, then current mode is text to morse
-            {
-                return false;
-            }
-            else return true;
-        }
+        private string placeholder = "Enter text here...";
 
         private void inputTextBox_TextChanged(object sender, EventArgs e)
         {
-            if (isCurrentModeM2T())
-            {
-
-            }
-            else
+            if (inputTextBox.Text != placeholder)
             {
                 outputTextBox.Text = MorseLib.TextToMorse(inputTextBox.Text);
             }
         }
 
+        private void inputTextBox_Enter(object sender, EventArgs e)
+        {
+            RichTextBox rtb = sender as RichTextBox;
+            if (rtb.Text == placeholder)
+            {
+                rtb.Text = "";
+            }
+        }
+
+        private void inputTextBox_Leave(object sender, EventArgs e)
+        {
+            RichTextBox rtb = sender as RichTextBox;
+            if (String.IsNullOrWhiteSpace(rtb.Text))
+            {
+                rtb.Text = placeholder;
+            }
+        }
         async Task wordDelay()
         {
-            await Task.Delay(lengthOfSound*7);
+            await Task.Delay(lengthOfSound * 7);
         }
         async Task symbolDelay()
         {
@@ -71,9 +71,9 @@ namespace Morse_Translator
             playbtn.Enabled = false;
 
             byte[][][] result = MorseLib.TextToMorseBytes(inputTextBox.Text);
-            foreach(byte[][] word in result)
+            foreach (byte[][] word in result)
             {
-                foreach(byte[] letter in word)
+                foreach (byte[] letter in word)
                 {
                     foreach (byte beep in letter)
                     {
@@ -98,7 +98,8 @@ namespace Morse_Translator
         private void wpmTextBox_TextChanged(object sender, EventArgs e)
         {
             int wpm;
-            if (int.TryParse(wpmTextBox.Text, out wpm)) {
+            if (int.TryParse(wpmTextBox.Text, out wpm))
+            {
                 lengthOfSound = 1200 / wpm;
                 if (wpmTextBox.ForeColor == Color.DarkRed)
                 {

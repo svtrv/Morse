@@ -7,11 +7,11 @@ using System.Linq;
  * swterr at outlook dot com
  * github.com/svtrv 
  */
-// 0 means - , 1 means ---
+
 public sealed class MorseLib
 {
     public static byte dot = 0, dash = 1;
-    public static Dictionary<char, byte[]> dictionary = new Dictionary<char, byte[]>(){ //International (ITU) code
+    public static Dictionary<char, byte[]> dictionary = new Dictionary<char, byte[]>(){ // International (ITU) code
         {'a',new byte[] {dot, dash}},
         {'b',new byte[] {dash, dot, dot, dot}},
         {'c',new byte[] {dash, dot, dash, dot}},
@@ -58,13 +58,15 @@ public sealed class MorseLib
         {')',new byte[] {dash, dot, dash, dash, dot, dash}},
 
     };
+
     public string MorseToText(BitArray input)
     {
         return "";
     }
+
    public static byte[][][] TextToMorseBytes(string input)
     {
-        input = input.ToLower();//there is no case-specific Morse codes, so ToLower looks necessary
+        input = input.ToLower(); // there is no case-specific Morse codes, so ToLower looks necessary
         var punctuation = input.Where(Char.IsPunctuation).Distinct().ToArray();
         var words = input.Split().Select(x => x.Trim(punctuation));
         byte[][][] result = new byte[words.Count()][][];
@@ -86,11 +88,12 @@ public sealed class MorseLib
             i++;
         }
         return result;
-    }//todo: stringbuilder
+    }
+
     public static string TextToMorse(string input)
     {
-        string result = "";
-        input = input.ToLower();//there is no case-specific Morse codes, so ToLower looks necessary
+        System.Text.StringBuilder result = new System.Text.StringBuilder(""); // StringBuilder increases speed
+        input = input.ToLower(); // there is no case-specific Morse codes, so ToLower looks necessary
         var words = input.Split();
         foreach (string word in words)
         {
@@ -104,24 +107,24 @@ public sealed class MorseLib
                         switch (b)
                         {
                             case 0:
-                                result += ".";
+                                result.Append(".");
                                 break;
                             case 1:
-                                result += "-";
+                                result.Append("-");
                                 break;
                             default:
                                 break;
                         }
                     }
-                    result += " ";
+                    result.Append(" ");
                 }
                 else
                 {
-                    result += "?"; // unknown character
+                    result.Append("?"); // unknown character
                 }
             }
-            result += "    ";
+            result.Append("    "); // space between words
         }
-        return result;
+        return result.ToString();
     }
 }

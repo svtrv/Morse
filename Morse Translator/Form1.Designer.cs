@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.m2tbtn = new System.Windows.Forms.Button();
-            this.t2mbtn = new System.Windows.Forms.Button();
             this.inputTextBox = new System.Windows.Forms.RichTextBox();
             this.outputTextBox = new System.Windows.Forms.RichTextBox();
             this.playbtn = new System.Windows.Forms.Button();
@@ -38,45 +36,37 @@
             this.copybtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // m2tbtn
-            // 
-            this.m2tbtn.Location = new System.Drawing.Point(13, 12);
-            this.m2tbtn.Name = "m2tbtn";
-            this.m2tbtn.Size = new System.Drawing.Size(51, 23);
-            this.m2tbtn.TabIndex = 0;
-            this.m2tbtn.Text = "M2T";
-            this.m2tbtn.UseVisualStyleBackColor = true;
-            // 
-            // t2mbtn
-            // 
-            this.t2mbtn.Enabled = false;
-            this.t2mbtn.Location = new System.Drawing.Point(63, 12);
-            this.t2mbtn.Name = "t2mbtn";
-            this.t2mbtn.Size = new System.Drawing.Size(51, 23);
-            this.t2mbtn.TabIndex = 2;
-            this.t2mbtn.Text = "T2M";
-            this.t2mbtn.UseVisualStyleBackColor = true;
-            // 
             // inputTextBox
             // 
-            this.inputTextBox.Location = new System.Drawing.Point(13, 42);
+            this.inputTextBox.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.inputTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.inputTextBox.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.inputTextBox.ForeColor = System.Drawing.Color.Gray;
+            this.inputTextBox.Location = new System.Drawing.Point(7, 5);
+            this.inputTextBox.Multiline = false;
             this.inputTextBox.Name = "inputTextBox";
-            this.inputTextBox.Size = new System.Drawing.Size(166, 65);
+            this.inputTextBox.Size = new System.Drawing.Size(355, 65);
             this.inputTextBox.TabIndex = 3;
-            this.inputTextBox.Text = "";
+            this.inputTextBox.Text = "Enter text here...";
             this.inputTextBox.TextChanged += new System.EventHandler(this.inputTextBox_TextChanged);
+            this.inputTextBox.Enter += new System.EventHandler(this.inputTextBox_Enter);
+            this.inputTextBox.Leave += new System.EventHandler(this.inputTextBox_Leave);
             // 
             // outputTextBox
             // 
-            this.outputTextBox.Location = new System.Drawing.Point(13, 117);
+            this.outputTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.outputTextBox.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.outputTextBox.ForeColor = System.Drawing.Color.Gray;
+            this.outputTextBox.Location = new System.Drawing.Point(7, 80);
             this.outputTextBox.Name = "outputTextBox";
-            this.outputTextBox.Size = new System.Drawing.Size(166, 65);
-            this.outputTextBox.TabIndex = 4;
+            this.outputTextBox.ReadOnly = true;
+            this.outputTextBox.Size = new System.Drawing.Size(252, 65);
+            this.outputTextBox.TabIndex = 0;
             this.outputTextBox.Text = "";
             // 
             // playbtn
             // 
-            this.playbtn.Location = new System.Drawing.Point(198, 117);
+            this.playbtn.Location = new System.Drawing.Point(277, 80);
             this.playbtn.Name = "playbtn";
             this.playbtn.Size = new System.Drawing.Size(35, 23);
             this.playbtn.TabIndex = 5;
@@ -86,7 +76,7 @@
             // 
             // wpmTextBox
             // 
-            this.wpmTextBox.Location = new System.Drawing.Point(198, 145);
+            this.wpmTextBox.Location = new System.Drawing.Point(277, 108);
             this.wpmTextBox.Name = "wpmTextBox";
             this.wpmTextBox.Size = new System.Drawing.Size(35, 20);
             this.wpmTextBox.TabIndex = 6;
@@ -96,7 +86,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(186, 168);
+            this.label1.Location = new System.Drawing.Point(265, 131);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(59, 13);
             this.label1.TabIndex = 7;
@@ -104,7 +94,7 @@
             // 
             // copybtn
             // 
-            this.copybtn.Location = new System.Drawing.Point(239, 117);
+            this.copybtn.Location = new System.Drawing.Point(318, 80);
             this.copybtn.Name = "copybtn";
             this.copybtn.Size = new System.Drawing.Size(44, 23);
             this.copybtn.TabIndex = 8;
@@ -116,32 +106,35 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(295, 194);
+            this.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.ClientSize = new System.Drawing.Size(369, 156);
             this.Controls.Add(this.copybtn);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.wpmTextBox);
             this.Controls.Add(this.playbtn);
             this.Controls.Add(this.outputTextBox);
             this.Controls.Add(this.inputTextBox);
-            this.Controls.Add(this.t2mbtn);
-            this.Controls.Add(this.m2tbtn);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(385, 195);
+            this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(385, 195);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.ShowIcon = false;
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Text to morse translator";
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button m2tbtn;
-        private System.Windows.Forms.Button t2mbtn;
-        private System.Windows.Forms.RichTextBox inputTextBox;
-        private System.Windows.Forms.RichTextBox outputTextBox;
         private System.Windows.Forms.Button playbtn;
         private System.Windows.Forms.TextBox wpmTextBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button copybtn;
+        private System.Windows.Forms.RichTextBox inputTextBox;
+        private System.Windows.Forms.RichTextBox outputTextBox;
     }
 }
 
