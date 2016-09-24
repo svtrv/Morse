@@ -1,2 +1,2 @@
 # Morse
-Morse-to-text and text-to-morse translator
+Text-to-morse translator
